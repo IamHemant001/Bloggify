@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <%- include("./partials/head.ejs") %>
+       <style>
+        .bg-img{
+            width: 100vw;
+            height: 100vh;
+         }
+         
+         p{
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 450;
+        }
+        #p-box{
+            position: absolute;
+            display: inline-block;
+            top: 40vh;
+            left: 30vw;
+            height: 20vh;
+            width: 40vw;
+        }
+
+        h1{
+            display: inline-block;
+            position: relative;
+            left: 43vw;
+            top: 1vh;
+        }
+        @media (max-width: 576px) {
+           .bg-img {
+               width: 100vw;
+               height: 60vh;
+           }
+           
+           h1{
+            left: 36vw;
+           }
+           #p-box {
+               top: 20vh;
+               left: 30vw;
+               height: 20vh;
+               width: 40vw;
+           }
+
+           p{
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 16px;
+           }
+           h2{
+            font-size: 1.5rem;
+           }
+        }
+           @media (max-width: 450px) {
+            
+            p{
+                font-size: 13px;
+                font-weight: 400;
+                line-height: 16px;
+            }
+            h2{
+             font-size: 1rem;
+            }
+
+            h1{
+                left: 32vw;
+            }
+       }
+    
+        </style>
+    </head>
+    <body style="margin: 0; background-color: black;  font-family: cursive;">
+        <%- include("./partials/nav.ejs") %>
+        <!-- <%= JSON.stringify(user) %> -->
+
+        <img src="images/bgImg.jpg" class="img-fluid bg-img" alt="..." >
+        <div id="p-box">
+            <h2>Ready to unleash your inner writer</h2>
+            <p>
+                Blogify is the platform waiting for your voice! Share your stories, insights, and expertise with a global audience.Blogify offers a streamlined submission process with guaranteeing exceptional content for passionate readers.Start your blogging journey today!
+            </p>
+        </div>
+        
+        <h1 class="text-warning">Your Blogs</h1>
+        <div class="container mt-3 d-flex flex-row mb-3">
+            <div class="row"><% blogs.forEach(blog => { %>
+                <div class="card mx-3 p-2 flex-wrap justify-content-center mt-4" style="width: 18rem;">
+                    <img src="<%=blog.coverImgURL%>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%=blog.title%></h5>
+                        <a href="/blog/<%=blog._id%>" class="btn btn-warning">View</a>
+                    </div>
+                </div>
+            <% }) %>
+            </div>
+        </div>
+                <%- include("./partials/script.ejs") %>
+                <%- include("./partials/footer.ejs") %>
+    </body>
+</html>

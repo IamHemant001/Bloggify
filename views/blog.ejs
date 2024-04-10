@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <%- include("./partials/head.ejs") %>
+       <style>
+            body{
+                background-color: #070b0efa;
+                font-family: cursive;
+            }
+
+            #coverImg {
+                width: 34vw;
+                display: block;
+                margin: auto;
+                border: 5px solid white;
+                margin-top: 1rem;
+                border-radius: 18px;
+            }
+
+            #title{
+                margin-top: 7rem;
+                text-align: center;
+                color: #ffc107;
+            }
+
+            #content {
+                border: 5px solid white;
+                min-height: 20vh;
+                height: auto;
+                padding: 2rem;
+                margin-top: 1rem;
+                border-radius: 40px 0 40px 0;
+                background-color: rebeccapurple;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: white;
+            }
+
+            #comment-box{
+                border: 5px solid white;
+                padding: 1rem;
+                border-radius: 1rem;
+                margin-bottom: 1rem;
+                color: white;
+            }
+            
+            #comment{
+                border: 5px solid #ffc107;
+                border-radius: 1rem;
+                padding: 1rem;
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body  style="margin: 0;">
+        <%- include("./partials/nav.ejs") %>
+        
+        <div class="container mt-4">
+            <h1 id="title">Title : <%=blog.title%></h1>
+            <img src="<%=blog.coverImgURL%>" id="coverImg" alt="...">
+            <div  id="content" class="bg-dark">
+                <pre><%=blog.body%> </pre>
+                <div>
+                    <h3 style="display: inline; color: #ffc107;">Created By:</h3>
+                    <img src="<%=blog.createdBy.profile%>" alt="" style=" width: 35px; border-radius: 15rem;"> <%=blog.createdBy.name %>
+                </div>
+            </div>
+        </div>
+
+        <% if (locals.user) { %>
+            
+            <form action="/blog/comment/<%=blog._id%>" method="post" class="container mt-3">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter Your Comment">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-warning">Submit</button>
+                </div>
+            </form>
+            
+            <% } %>
+            <div class="container mt-3" id="comment-box">
+                <h2>Comments (<%=comments.length%>)</h2>
+                <% comments.forEach(comment => { %>
+                    <div class="mb-3" id="comment">
+                        <img style="display: inline; width: 35px; border-radius: 15rem;" src="<%=comment.createdBy.profile%>" alt="..."> <%=comment.createdBy.name%> <b>:</b> <pre style="display: inline;"><%=comment.content%></pre>
+                    </div>
+                    <% }) %>
+            </div>
+        <%- include("./partials/script.ejs") %>
+        <%- include("./partials/footer.ejs") %>
+          
+    </body>
+</html>

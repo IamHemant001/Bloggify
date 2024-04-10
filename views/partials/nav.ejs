@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top border-body" style="background-color: #000;min-height: 5rem;">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">Blogify</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/" style="color: yellow;">Home</a>
+              </li>
+              <% if (locals.user) { %>
+              <li class="nav-item">
+                  <a class="nav-link" href="/blog/add-new" style="color: yellow;">Add blog</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link" href="/blogs" style="color: yellow;">Your blogs</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: yellow;">
+                      Arjun
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/user/Logout" style="color: black;">Logout</a></li>
+                  </ul>
+              </li>
+              <% } else { %>
+              <li class="nav-item">
+                  <a class="nav-link" href="/user/signup" style="color: yellow;">Create Account</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/user/signin" style="color: yellow;">Signin</a>
+              </li>
+              <% } %>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<% if(locals.error){ %>
+<div class="alert alert-danger mx-auto" role="alert" style="width: 400px; text-align: center;font-size: 1.5rem; background-color: black; color: red;margin-top: 6rem;">
+  <%= locals.error %>
+</div>
+<% } %>

@@ -21,6 +21,8 @@ Blogify is a full-stack blogging website that allows users to create, publish, a
 - Other Libraries: nodemailer for email verification and password reset, dotenv for environment variables
 
 ## Website Link :- https://bloggify-z7sk.onrender.com/
+
+
 ## Getting Started
 
 1. Clone the repository:
@@ -56,6 +58,10 @@ Contributions are welcome! Fork the repository, make your changes, and submit a 
 7. License
 This project is licensed under the MIT License.
 
+##Contact
+Author Name: Hemanth Kumar
+GitHub: Iamhemant001
+Email: mr.hk339@gmail.com
 
 Feel free to customize this README.md file according to your project's specific details and requirements.
 
